@@ -1,0 +1,49 @@
+class Solution {
+public:
+    int length(ListNode* head)
+    {
+        int len=0;
+        while(head != NULL)
+        {
+            head = head -> next;
+            len++ ;
+        }
+        cout<<len;
+        return len;
+
+    }
+
+    ListNode* reverseKGroup(ListNode* head, int k) {
+
+        if(length(head) < k)return head;
+        ListNode* curr = head;
+        ListNode* prev = NULL;
+        ListNode* next = NULL;
+        // int len = length(head);
+
+        if(head == NULL)
+        {
+            return head;
+        }
+
+            int count = 0;
+            while(curr != NULL && count < k)
+            {
+                next = curr -> next;
+                curr -> next = prev;
+                prev = curr;
+                curr = next;
+                count ++;
+            }
+
+            if(next != NULL )
+            {
+                 head -> next = reverseKGroup(next ,k);
+            } 
+            
+
+        
+        return prev;
+        
+    }
+};
