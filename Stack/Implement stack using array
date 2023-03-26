@@ -1,0 +1,27 @@
+void MyStack :: push(int x)
+{
+    // Your Code
+    if((1000 - top) > 1)
+    {
+        top++;
+        arr[top] = x;
+        
+    }
+    // else
+    // {
+    //     cout<<"Stack Overflow";
+    // }
+}
+
+//Function to remove an item from top of the stack.
+int MyStack :: pop()
+{
+    // Your Code 
+    if(top >= 0)
+    {
+        top--;
+        return arr[top+1];
+    }
+    // else
+    //     cout<<"Stack Underflow";
+}
