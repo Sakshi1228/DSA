@@ -1,0 +1,39 @@
+class Solution{
+
+    // Function to find the trapped water between the blocks.
+    public:
+    long long trappingWater(int arr[], int n){
+        // code here
+        
+        int mar[n],mal[n];
+        
+        mar[n-1] = arr[n-1];
+        
+        mal[0] = arr[0];
+        
+        long long sum =0;
+        
+        int width[n];
+        
+        for(int i=1;i<n;i++)
+        {
+            mal[i] = max(mal[i-1],arr[i]);
+        }
+        
+        for(int i=n-2;i>=0;i--)
+        {
+            mar[i] = max(mar[i+1],arr[i]);
+        }
+        
+        for(int i=0;i<n;i++)
+        {
+            width[i] = min(mal[i],mar[i]);
+            width[i] = width[i] - arr[i];
+            sum += width[i];
+        }
+        
+        return sum;
+        
+        
+    }
+};
