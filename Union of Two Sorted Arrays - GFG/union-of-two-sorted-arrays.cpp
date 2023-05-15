@@ -14,24 +14,77 @@ class Solution{
         //Your code here
         //return vector with correct order of elements
         
-        set<int> s;
+        //optimal solution two pointer approach
+        
+        
+        
         vector<int> v;
-        for(int i=0;i<n;i++)
+        
+        int i=0,j=0;
+        while(i<n && j<m)
         {
-            s.insert(arr1[i]);
+            
+            if(arr1[i] >= arr2[j])
+            {
+                if(v.size() == 0 || v.back() != arr2[j])
+                {
+                    v.push_back(arr2[j]);
+                }
+                
+                j++;
+                
+            }
+            else if(arr1[i] <= arr2[j])
+            {
+                if(v.size() == 0 || v.back() != arr1[i])
+                {
+                    v.push_back(arr1[i]);
+                }
+                
+                i++;
+            }
+            
         }
         
-        for(int i=0;i<m;i++)
+        while(j<m)
         {
-            s.insert(arr2[i]);
+            if(v.size() == 0 || v.back() != arr2[j])
+                {
+                    v.push_back(arr2[j]);
+                }
+                
+                j++;
         }
         
-        for(auto it: s)
+        while(i<n)
         {
-            v.push_back(it);
+            if(v.size() == 0 || v.back() != arr1[i])
+                {
+                    v.push_back(arr1[i]);
+                }
+                
+                i++;
         }
         
         return v;
+        // set<int> s;
+        // vector<int> v;
+        // for(int i=0;i<n;i++)
+        // {
+        //     s.insert(arr1[i]);
+        // }
+        
+        // for(int i=0;i<m;i++)
+        // {
+        //     s.insert(arr2[i]);
+        // }
+        
+        // for(auto it: s)
+        // {
+        //     v.push_back(it);
+        // }
+        
+        // return v;
         
     }
 };
