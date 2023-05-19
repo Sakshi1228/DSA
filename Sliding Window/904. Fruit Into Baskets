@@ -1,0 +1,40 @@
+class Solution {
+public:
+    // similar to pick toys
+    int totalFruit(vector<int>& fruits) {
+        map<int, int> mp;
+        int maxi = 0;
+        int i=0,j=0;
+
+        while(j<fruits.size())
+        {
+            mp[fruits[j]]++;
+
+            if(mp.size() <= 2)
+            {
+                maxi = max(maxi,j-i+1);
+                j++;
+            }
+            else if(mp.size() > 2)
+            {
+                while(mp.size() > 2)
+                {
+                    if(mp.find(fruits[i]) != mp.end())
+                        mp[fruits[i]]--;
+
+                    if(mp[fruits[i]] == 0)
+                    {
+                        mp.erase(fruits[i]);
+                    }
+
+                    i++;
+                }
+
+                j++;
+            }
+        }
+
+        return maxi;
+
+    }
+};
