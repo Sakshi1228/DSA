@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool isIsomorphic(string str1, string str2) {
+        int hash[256] = {0};
+        bool ischarmapped[256] = {0};
+        
+        for(int i=0;i<str1.size();i++)
+        {
+            if(hash[str1[i]] == 0 && ischarmapped[str2[i]] == 0)
+            {
+                hash[str1[i]] = str2[i];
+                ischarmapped[str2[i]] = 1;
+            }
+        }
+        
+        for(int i=0;i<str1.size();i++)
+        {
+            if(char(hash[str1[i]]) != str2[i])
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+};
