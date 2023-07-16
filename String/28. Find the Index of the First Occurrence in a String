@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int h = haystack.size();
+        int n = needle.size();
+
+        for(int i=0;i<h-n+1;i++)
+        {
+            if(haystack[i] == needle[0])
+            {
+                string sub = haystack.substr(i,n);
+                int j =0,k=0;
+                cout<<sub<<n<<sub.length();
+                while(k<n)
+                {
+                    if(sub[j] != needle[k])
+                        break;
+
+                    j++;
+                    k++;
+                }
+                if(k==n)
+                    return i;
+            }
+        }
+
+        return -1;
+    }
+};
